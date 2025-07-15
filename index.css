@@ -1,5 +1,12 @@
 /* #region DIGITAL CLOCK */
-/* CSS for the Alarm Clock */
+
+.clock-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+}
+
 body {
   background-color: #1a1a1a;
   display: flex;
@@ -14,27 +21,32 @@ body {
   background-color: #000000;
   border: 3px solid #222;
   border-radius: 20px;
-  padding: 30px;
+  padding: 20px;
   box-shadow: 0 0 20px rgba(0, 255, 0, 0.3), inset 0 0 10px rgba(0, 0, 0, 0.5);
-  width: 90%;
+  width: 100%;
   max-width: 500px;
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .time-display {
-  font-size: 5rem; /* Large font for the time */
-  color: #00ff00; /* Bright green color */
+  font-size: 5.8rem;
+  color: #00ff00;
   text-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00, 0 0 20px #00ff00,
     0 0 40px #00ff00;
-  letter-spacing: 5px;
-  margin-bottom: 25px;
+  letter-spacing: 10px;
+  line-height: 1;
+  padding-left: 12px;
 }
 
 @media (max-width: 600px) {
   .time-display {
-    font-size: 3rem;
+    font-size: 3.6rem;
+    letter-spacing: 5px;
   }
 }
+
 
 .controls {
   display: flex;
@@ -49,15 +61,14 @@ body {
   width: 60px;
   font-size: 1.5rem;
   background-color: #111;
-  border: 1px solid #00ff00;
+  border: 2px solid #00ff00;
   color: #00ff00;
   text-align: center;
   border-radius: 5px;
   font-family: "Orbitron", sans-serif;
   padding: 5px;
+  /* box-shadow: 0 0 8px rgba(0, 255, 0, 0.5);  */
 }
-
-/* Hide the default number input arrows */
 .controls input[type="number"]::-webkit-inner-spin-button,
 .controls input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
@@ -65,6 +76,11 @@ body {
 }
 .controls input[type="number"] {
   -moz-appearance: textfield;
+}
+.controls input[type="number"]::placeholder {
+  color: #00ff00;
+  opacity: 1; /* Ensure it's not faded by the browser */
+  /* text-shadow: 0 0 5px #00ff00; */
 }
 
 .controls button {
@@ -78,16 +94,14 @@ body {
   border-radius: 5px;
   transition: background-color 0.3s, box-shadow 0.3s;
 }
-
 .controls button:hover {
   background-color: #00ff00;
   color: #000;
   box-shadow: 0 0 10px #00ff00;
 }
-
 .alarm-status {
   color: #00ff00;
-  min-height: 24px; /* Prevents layout shift */
+  min-height: 24px;
   font-size: 1rem;
 }
 

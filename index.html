@@ -4,28 +4,53 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TP Horloge</title>
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="index.css">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="index.css" />
   </head>
   <body>
     <section class="digital-clock">
-    <div class="alarm-clock">
-        <div id="time-display" class="time-display">00:00:00</div>
-        
+      <!-- New parent container to hold both the screen and the controls -->
+      <div class="clock-container">
+        <!-- The .alarm-clock div now ONLY contains the time display (the "screen") -->
+        <div class="alarm-clock">
+          <div id="time-display" class="time-display">00:00:00</div>
+        </div>
+
         <div class="controls">
-            <input type="number" id="alarm-hour" min="0" max="23" placeholder="HH">
-            <input type="number" id="alarm-minute" min="0" max="59" placeholder="MM">
-            <button id="set-alarm-btn">Régler l'alarme</button>
-            <button id="stop-alarm-btn">Arrêter l'alarme</button>
+          <input
+            type="number"
+            id="alarm-hour"
+            min="0"
+            max="23"
+            placeholder="HH"
+          />
+          <input
+            type="number"
+            id="alarm-minute"
+            min="0"
+            max="59"
+            placeholder="MM"
+          />
+          <button id="set-alarm-btn">Régler l'alarme</button>
+          <button id="stop-alarm-btn">Arrêter l'alarme</button>
         </div>
 
         <div id="alarm-status" class="alarm-status"></div>
-    </div>
+      </div>
 
-    <!-- An alarm sound. Using a Data URI to make this file self-contained -->
-    <audio id="alarm-sound" src=""></audio>
+      <audio id="digital-alarm-sound" src="./sounds/digital-alarm.mp3"></audio>
+      <audio
+        id="digital-ticking-sound"
+        src="./sounds/digital-clock-ticking.mp3"
+      ></audio>
     </section>
 
-    <section class="analog-clock"></section>
+    <section class="analog-clock">
+      <audio id="analog-alarm-sound" src="./sounds/analog-alarm.mp3"></audio>
+      <audio
+        id="analog-ticking-sound"
+        src="./sounds/analog-clock-ticking.mp3"
+      ></audio>
+    </section>
   </body>
 </html>
