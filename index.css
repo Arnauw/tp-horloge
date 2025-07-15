@@ -1,20 +1,37 @@
-/* #region DIGITAL CLOCK */
-
-.clock-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 25px;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
   background-color: #1a1a1a;
+  margin: 0;
+  font-family: "Orbitron", sans-serif;
+}
+
+/* #region DIGITAL CLOCK */
+
+.digital-clock {
+  height: 100vh;
+  width: 100%;
+  position: relative;
+  top: 50%;
+  background-color: #1a1a1a;
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
   margin: 0;
   font-family: "Orbitron", sans-serif;
+}
+
+.digital-clock-container {
+  /* height: 100vh;
+  width: 100%; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
 }
 
 .alarm-clock {
@@ -46,7 +63,6 @@ body {
     letter-spacing: 5px;
   }
 }
-
 
 .controls {
   display: flex;
@@ -105,9 +121,170 @@ body {
   font-size: 1rem;
 }
 
+/* --- Styles for the Custom Checkbox --- */
+
+/* 1. The container for the checkbox and its label */
+.checkbox-container {
+  display: flex;         /* Align the box and text side-by-side */
+  align-items: center;   /* Vertically center them */
+  gap: 10px;             /* Space between the box and the text */
+  cursor: pointer;       /* Show a pointer on hover */
+  
+  /* Make the text match the button style */
+  font-family: "Orbitron", sans-serif;
+  color: #00ff00;
+  font-size: 1rem;
+}
+
+/* 2. Hide the original, default checkbox */
+.checkbox-container input[type="checkbox"] {
+  display: none;
+}
+
+/* 3. Style our custom checkbox (the span) */
+.custom-checkbox {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  background-color: #1a1a1a; /* Match the button background */
+  border: 2px solid #00ff00;  /* Match the button border */
+  border-radius: 3px;         /* A slight rounding */
+  transition: background-color 0.2s ease-in-out; /* Smooth transition */
+}
+
+/* 4. Change the background when the (hidden) checkbox is checked */
+.checkbox-container input[type="checkbox"]:checked + .custom-checkbox {
+  background-color: #00ff00; /* Fill it with green */
+}
+
 /* #endregion */
 
-
 /* #region ANALOG CLOCK */
+
+.analog-clock {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+}
+
+.analog-clock-container {
+    width: 300px;
+    height: 300px;
+    background-color: #ffffff;
+    border: 8px solid #333;
+    border-radius: 50%;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+/* --- The Hands --- */
+.hand {
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+    background-color: #333;
+    border-radius: 3px;
+    transform-origin: bottom center;
+}
+.hour-hand {
+    width: 7px;
+    height: 80px;
+    transform: translateX(-50%) rotate(0deg);
+}
+.minute-hand {
+    width: 5px;
+    height: 110px;
+    transform: translateX(-50%) rotate(0deg);
+}
+.second-hand {
+    width: 2px;
+    height: 120px;
+    background-color: #e74c3c;
+    transform: translateX(-50%) rotate(0deg);
+}
+.center-pin {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 15px;
+    height: 15px;
+    background-color: #333;
+    border-radius: 50%;
+    z-index: 10;
+}
+
+/* --- The Numbers on the Clock Face --- */
+/* Common style for all number containers */
+.number {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    font-size: 1.5rem;
+    font-family: sans-serif;
+    font-weight: bold;
+    color: #333;
+}
+/* Common style for the span inside the number container */
+.number span {
+    display: inline-block;
+    padding-top: 10px; /* Pushes the number away from the center */
+}
+
+/* --- Individual Rotations for Each Number (Replaces the inline styles) --- */
+/* Position each number by rotating its container... */
+.number-1 { transform: rotate(30deg); }
+.number-2 { transform: rotate(60deg); }
+.number-3 { transform: rotate(90deg); }
+.number-4 { transform: rotate(120deg); }
+.number-5 { transform: rotate(150deg); }
+.number-6 { transform: rotate(180deg); }
+.number-7 { transform: rotate(210deg); }
+.number-8 { transform: rotate(240deg); }
+.number-9 { transform: rotate(270deg); }
+.number-10 { transform: rotate(300deg); }
+.number-11 { transform: rotate(330deg); }
+.number-12 { transform: rotate(360deg); }
+
+/* ...and then rotate the text back upright. */
+.number-1 span { transform: rotate(-30deg); }
+.number-2 span { transform: rotate(-60deg); }
+.number-3 span { transform: rotate(-90deg); }
+.number-4 span { transform: rotate(-120deg); }
+.number-5 span { transform: rotate(-150deg); }
+.number-6 span { transform: rotate(-180deg); }
+.number-7 span { transform: rotate(-210deg); }
+.number-8 span { transform: rotate(-240deg); }
+.number-9 span { transform: rotate(-270deg); }
+.number-10 span { transform: rotate(-300deg); }
+.number-11 span { transform: rotate(-330deg); }
+.number-12 span { transform: rotate(-360deg); }
+
+
+
+#analog-ticking-btn {
+  position: relative;
+  top: 200px;
+  left: 200px;
+  height: 100px;
+  width: 100px;
+  background-color: #1a1a1a;
+  color: #00ff00;
+  border: 2px solid #00ff00;
+  padding: 10px 20px;
+  font-family: "Orbitron", sans-serif;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+#analog-ticking-btn:hover {
+  background-color: #00ff00;
+  color: #000;
+  box-shadow: 0 0 10px #00ff00;
+}
 
 /* #endregion */
