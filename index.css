@@ -79,7 +79,7 @@ body {
 }
 .controls input[type="number"]::placeholder {
   color: #00ff00;
-  opacity: 1; /* Ensure it's not faded by the browser */
+  opacity: 1;
   /* text-shadow: 0 0 5px #00ff00; */
 }
 
