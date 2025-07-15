@@ -73,7 +73,8 @@ function updateTime() {
       }
     }
 
-    if (timeNow.endsWith('00:00')) {
+
+    if (timeNow.endsWith("00:00")) {
       analogAlarmSound.play();
     }
 
